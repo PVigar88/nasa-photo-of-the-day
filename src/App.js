@@ -8,7 +8,9 @@ import ContentPanel from "./components/ContentPanel";
 function App() {
   const [picOfTheDay, setPicOfTheDay] = useState([]);
   useEffect(() => {
-    Axios.get("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+    Axios.get(
+      "https://api.nasa.gov/planetary/apod?api_key=1yPHQU6cJnSL0oaOtrN6Ccza5fa2ejhwkij7Bfw5"
+    )
       .then((res) => {
         setPicOfTheDay(res.data);
       })
@@ -27,7 +29,7 @@ function App() {
         </span>
         ! //
         <Header podDate={picOfTheDay.date} />
-        <NasaPoD srcPOD={picOfTheDay.hdurl} />
+        <NasaPoD srcPOD={picOfTheDay.url} format={picOfTheDay.media_type} />
         <ContentPanel
           podTitle={picOfTheDay.title}
           podExplanation={picOfTheDay.explanation}

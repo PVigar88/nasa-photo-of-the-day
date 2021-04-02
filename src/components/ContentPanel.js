@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function ContentPanel(props) {
   const { podTitle, podExplanation, podCopyright } = props;
