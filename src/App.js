@@ -9,6 +9,8 @@ function App() {
   const [picOfTheDay, setPicOfTheDay] = useState([]);
   useEffect(() => {
     Axios.get(
+      // "https://api.nasa.gov/planetary/apod?api_key=1yPHQU6cJnSL0oaOtrN6Ccza5fa2ejhwkij7Bfw5"
+      //"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
       "https://api.nasa.gov/planetary/apod?api_key=1yPHQU6cJnSL0oaOtrN6Ccza5fa2ejhwkij7Bfw5"
     )
       .then((res) => {
@@ -17,25 +19,17 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun{" "}
-        <span role="img" aria-label="go!">
-          🚀
-        </span>
-        ! //
-        <Header podDate={picOfTheDay.date} />
-        <NasaPoD srcPOD={picOfTheDay.url} format={picOfTheDay.media_type} />
-        <ContentPanel
-          podTitle={picOfTheDay.title}
-          podExplanation={picOfTheDay.explanation}
-          podCopyright={picOfTheDay.copyright}
-        />
-      </p>
+      <Header podDate={picOfTheDay.date} />
+      <NasaPoD srcPOD={picOfTheDay.url} format={picOfTheDay.media_type} />
+      <ContentPanel
+        podTitle={picOfTheDay.title}
+        podExplanation={picOfTheDay.explanation}
+        podCopyright={picOfTheDay.copyright}
+      />
     </div>
   );
 }
